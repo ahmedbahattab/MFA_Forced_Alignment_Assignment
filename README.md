@@ -133,9 +133,7 @@ mfa align "[OPTIONS] CORPUS_DIRECTORY DICTIONARY_PATH ACOUSTIC_MODEL_PATH
 ```
 Example:
 ```bash
-mfa align C:\Users\ahmed\OneDrive\Desktop\Corpus
-english_us_arpa english_us_arpa
-C:\Users\ahmed\OneDrive\Desktop\Aligned_Output
+mfa align C:\Users\ahmed\OneDrive\Desktop\Corpus english_us_arpa english_us_arpa C:\Users\ahmed\OneDrive\Desktop\Aligned_Output
 ```
 
 MFA executed:
