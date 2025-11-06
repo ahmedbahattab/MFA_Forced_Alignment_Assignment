@@ -138,7 +138,7 @@ Alignment completed successfully.
 
 ---
 
-# **5. Validation **
+# **5. Validation**
 
 Command:
 
