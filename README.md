@@ -21,7 +21,7 @@
 * [2. Downloading MFA Models](#2-downloading-required-models)
 * [3. Dataset Preparation](#3-dataset-preparation)
 * [4. Running Forced Alignment](#4-run-forced-alignment)
-* [5. Corpus Validation](#5-validation-optional-step-performed)
+* [5. Corpus Validation](#5-validation)
 * [6. Praat TextGrid Analysis](#6-inspect--analyze-output-in-praat)
 * [7. Output Files](#7-output-files-included)
 * [8. Screenshots](#8-screenshots-included)
