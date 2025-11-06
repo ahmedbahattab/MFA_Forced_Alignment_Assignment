@@ -1,6 +1,4 @@
-
-# **Forced Alignment using Montreal Forced Aligner (MFA)**
-
+# **Forced Alignment using Montreal Forced Aligner (MFA)**  
 ### *Assignment 1 – Speech Processing*
 
 <div align="center" style="text-align: center">
@@ -9,52 +7,48 @@
 
 <img src="https://img.shields.io/badge/Tool-MFA%203.3.8-blue">
 <img src="https://img.shields.io/badge/Environment-Miniconda-yellow">
-<img src="https://img.shields.io/badge/Language-English_US_ARPA-green">
-<img src="https://img.shields.io/badge/Visualization-Praat-purple">
-
-<img src="https://img.shields.io/badge/Python-3.9-informational">
-<img src="https://img.shields.io/badge/Dictionary-English_US_ARPA-9b59b6">
 <img src="https://img.shields.io/badge/Acoustic_Model-English_US_ARPA-6a5acd">
-
+<img src="https://img.shields.io/badge/Dictionary-English_US_ARPA-9b59b6">
+<img src="https://img.shields.io/badge/Visualization-Praat-purple">
 </div>
 
 ---
 
 ## **Contents**
-
-* [Objective](#objective)
-* [1. Environment Setup](#1-environment-setup)
-* [2. Downloading MFA Models](#2-downloading-required-models)
-* [3. Dataset Preparation](#3-dataset-preparation)
-* [4. Corpus Validation](#4-validation)        <!-- ✅ Updated -->
-* [5. Running Forced Alignment](#5-run-forced-alignment) <!-- ✅ Updated -->
-* [6. Praat TextGrid Analysis](#6-inspect--analyze-output-in-praat)
-* [7. Output Files](#7-output-files-included)
-* [8. Screenshots](#8-screenshots-included)
-* [Tools Used](#tools-used)
-* [Observations](#observations)
-* [Conclusion](#conclusion)
+- [Objective](#objective)
+- [1. Environment Setup](#1-environment-setup)
+- [2. Downloading MFA Models](#2-downloading-required-models)
+- [3. Dataset Preparation](#3-dataset-preparation)
+- [4. Corpus Validation](#4-validation)
+- [5. Running Forced Alignment](#5-run-forced-alignment)
+- [6. Praat TextGrid Analysis](#6-inspect--analyze-output-in-praat)
+- [7. Output Files](#7-output-files-included)
+- [8. Screenshots](#8-screenshots-included)
+- [Tools Used](#tools-used)
+- [Observations](#observations)
+- [Conclusion](#conclusion)
 
 ---
 
 ## **Objective**
+This assignment required setting up and running the full Montreal Forced Aligner pipeline.  
+My goals were to:
 
-The purpose of this assignment is to:
+- Install and configure MFA inside a clean Conda environment  
+- Prepare a small speech corpus containing `.wav` files and matching transcripts  
+- Perform forced alignment using the **english_us_arpa** dictionary and acoustic model  
+- Generate aligned TextGrid files  
+- Visually analyze the alignment using **Praat**
 
-* Set up Montreal Forced Aligner (MFA)
-* Align audio (.wav) with transcripts (.txt)
-* Generate Praat TextGrid files containing word & phoneme timestamps
-* Learn how automatic phonetic alignment works
+In short:
 
-MFA takes:
-🎤 **Audio** → 🔤 **Transcript** → **TextGrid (word + phoneme alignment)**
+🎤 **Speech Audio** → 🔤 **Transcript** → ✅ **Word + Phoneme Alignment (TextGrid)**
 
 ---
 
 # **1. Environment Setup**
 
-### Create & activate environment
-
+### Create & activate a dedicated environment
 ```bash
 conda create -n mfa_env python=3.9
 conda activate mfa_env
@@ -72,43 +66,43 @@ pip install montreal-forced-aligner
 mfa version
 ```
 
-MFA 3.3.8 successfully installed.
+I confirmed that MFA 3.3.8 installed successfully.
 
 ---
 
 # **2. Downloading Required Models**
 
-### Dictionary
+### Download dictionary
 
 ```bash
 mfa model download dictionary english_us_arpa
 ```
 
-### Acoustic Model
+### Download acoustic model
 
 ```bash
 mfa model download acoustic english_us_arpa
 ```
 
-### Verify
+### Verify models
 
 ```bash
 mfa model list dictionary
 mfa model list acoustic
 ```
 
-Models downloaded correctly.
+Both models appeared in the list, confirming that the installation was correct.
 
 ---
 
 # **3. Dataset Preparation**
 
-The dataset contained:
+My dataset contained:
 
-* `/wav` → speech audio
-* `/transcripts` → text files
+* `/wav` — raw audio files
+* `/transcripts` — matching text transcripts
 
-These were reorganized to MFA format:
+I reorganized them into the standard MFA structure:
 
 ```
 corpus_ready/
@@ -119,73 +113,71 @@ corpus_ready/
 │── ...
 ```
 
-All files were paired and prepared correctly.
+All files were paired properly (each `.wav` had a `.txt` with the same base name).
 
 ---
 
 # **4. Validation**
 
-The general syntax is:
+Before aligning, I validated the corpus using:
 
 ```bash
-mfa validate <corpus_directory> <dictionary> <acoustic_model>
+mfa validate <corpus_directory> <dictionary_path_or_name> <acoustic_model_path_or_name>
 ```
-
-Example:
-
 ```bash
 mfa validate C:\Users\Ahmed\Desktop\Corpus english_us_arpa english_us_arpa
 ```
 
-Validation output:
+**Validation results:**
 
-* 6 audio files
-* 6 transcripts
-* No missing files
-* No audio read errors
+* 6 audio files detected
+* 6 matching transcripts found
+* No unreadable audio
 * Minor OOV warnings (expected)
 
-Corpus passed validation.
+The corpus passed validation with no critical issues.
 
 ---
 
 # **5. Run Forced Alignment**
 
-The general syntax is:
+General syntax:
 
 ```bash
-mfa align [OPTIONS] CORPUS_DIRECTORY DICTIONARY_PATH ACOUSTIC_MODEL_PATH OUTPUT_DIRECTORY
+mfa align [OPTIONS] CORPUS DICTIONARY ACOUSTIC_MODEL OUTPUT
 ```
 
-Example:
+My command:
 
 ```bash
-mfa align C:\Users\ahmed\OneDrive\Desktop\Corpus english_us_arpa english_us_arpa C:\Users\ahmed\OneDrive\Desktop\Aligned_Output
+mfa align C:\Users\Ahmed\Desktop\Corpus english_us_arpa english_us_arpa C:\Users\Ahmed\Desktop\Aligned_Output
 ```
 
-MFA executed:
+During alignment, MFA performed:
 
 * Feature extraction
-* G2P & graph compilation
-* First-pass alignment
-* Viterbi alignment
-* TextGrid export
+* G2P for any unknown words
+* Graph compilation
+* First-pass + Viterbi alignment
+* TextGrid generation
 
-Alignment completed successfully.
+The alignment completed successfully without errors.
 
 ---
 
 # **6. Inspect & Analyze Output in Praat**
 
-Every generated `.TextGrid` was:
+To evaluate the alignments, I opened each `.TextGrid` in **Praat**:
 
-* Download [Praat](https://praat.org/) from the official website.
-* Checked for word tier alignment
-* Checked for phoneme tier alignment
-* Compared with spectrogram
-* Verified with waveform timing
+What I checked:
 
-All TextGrids aligned accurately, with no major mismatches.
+* Word boundaries matched the waveform
+* Phoneme tier had clean segmentation
+* No overlapping or missing intervals
+* Pauses and silences aligned correctly
+* Compared alignment with spectrogram for accuracy
+
+Overall, the TextGrids looked consistent and well-aligned.
 
 ---
 
@@ -193,62 +185,67 @@ All TextGrids aligned accurately, with no major mismatches.
 
 ```
 alignment_output/
-│── file1.TextGrid
-│── file2.TextGrid
-│── file3.TextGrid
+│── sample1.TextGrid
+│── sample2.TextGrid
+│── sample3.TextGrid
 │── ...
 │── alignment_analysis.csv
 ```
 
-Includes:
+Deliverables include:
 
-* TextGrid files
-* CSV analysis data (durations, likelihoods, SNR)
+* All generated TextGrid files
+* CSV alignment statistics (duration, confidence, likelihoods)
 
 ---
 
 # **8. Screenshots Included**
 
-Located in `/screenshots/`:
+Screenshots are stored in the `/screenshots` folder:
 
 * MFA installation
 * Model downloads
-* Validation results
+* Corpus validation
 * Alignment logs
 * Praat TextGrid views
+
+These provide visual proof of each step in the pipeline.
 
 ---
 
 # **Tools Used**
 
-| Tool / Technology                          | Purpose                                     |
-| ------------------------------------------ | ------------------------------------------- |
-| **Python**                                 | Runs MFA inside Conda environment           |
-| **Miniconda**                              | Creates `mfa_env` virtual environment       |
-| **MFA (Montreal Forced Aligner)**          | Performs forced alignment                   |
-| **MFA Acoustic Model (english_us_arpa)**   | Acoustic features for aligning phonemes     |
-| **MFA Dictionary Model (english_us_arpa)** | Converts words → phonemes                   |
-| **Praat**                                  | Visual inspection of alignment in TextGrids |
+| Tool / Technology                  | Purpose                                  |
+| ---------------------------------- | ---------------------------------------- |
+| **Python 3.9**                     | Environment for running MFA              |
+| **Miniconda**                      | Managing isolated MFA environment        |
+| **MFA 3.3.8**                      | Forced alignment engine                  |
+| **english_us_arpa Dictionary**     | Grapheme-to-phoneme mapping              |
+| **english_us_arpa Acoustic Model** | Acoustic prediction for alignment        |
+| **Praat**                          | Visual inspection of TextGrid alignments |
 
 ---
 
 # **Observations**
 
-* Alignment was accurate and consistent
-* Word boundaries matched the waveform
-* Phoneme segmentation was clean
-* Minor OOV warnings did not affect alignment
-* No timing offsets or missing segments
+* All audio files aligned without failure
+* Word and phoneme boundaries were accurate
+* OOV warnings were minimal and had no effect
+* No timing drift or segmentation issues
+* Alignment quality was consistent across all files
 
 ---
 
 # **Conclusion**
 
-The complete forced alignment pipeline using MFA was successfully executed, including:
+I successfully completed the full forced alignment workflow:
 
-* Environment setup
-* Dataset preparation
-* Dictionary & acoustic model download
-* Validation
-* Forced alignment
-* TextGrid verification in Praat
+✅ Environment setup
+✅ Dataset preparation
+✅ Dictionary & acoustic model setup
+✅ Corpus validation
+✅ Forced alignment using MFA
+✅ TextGrid verification in Praat
+
+Want an even more polished/beautiful GitHub-style README with icons & colors?
+```
