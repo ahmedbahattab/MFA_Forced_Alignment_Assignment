@@ -1,3 +1,4 @@
+
 # **Forced Alignment using Montreal Forced Aligner (MFA)**
 
 ### *Assignment 1 – Speech Processing*
@@ -11,13 +12,11 @@
 <img src="https://img.shields.io/badge/Language-English_US_ARPA-green">
 <img src="https://img.shields.io/badge/Visualization-Praat-purple">
 
-
 <img src="https://img.shields.io/badge/Python-3.9-informational">
 <img src="https://img.shields.io/badge/Dictionary-English_US_ARPA-9b59b6">
 <img src="https://img.shields.io/badge/Acoustic_Model-English_US_ARPA-6a5acd">
 
 </div>
-
 
 ---
 
@@ -27,8 +26,8 @@
 * [1. Environment Setup](#1-environment-setup)
 * [2. Downloading MFA Models](#2-downloading-required-models)
 * [3. Dataset Preparation](#3-dataset-preparation)
-* [4. Running Forced Alignment](#4-run-forced-alignment)
-* [5. Corpus Validation](#5-validation)
+* [4. Corpus Validation](#4-validation)        <!-- ✅ Updated -->
+* [5. Running Forced Alignment](#5-run-forced-alignment) <!-- ✅ Updated -->
 * [6. Praat TextGrid Analysis](#6-inspect--analyze-output-in-praat)
 * [7. Output Files](#7-output-files-included)
 * [8. Screenshots](#8-screenshots-included)
@@ -59,7 +58,7 @@ MFA takes:
 ```bash
 conda create -n mfa_env python=3.9
 conda activate mfa_env
-```
+````
 
 ### Install MFA
 
@@ -124,39 +123,16 @@ All files were paired and prepared correctly.
 
 ---
 
-# **4. Run Forced Alignment**
+# **4. Validation**
 
 The general syntax is:
-```bash
-mfa align "[OPTIONS] CORPUS_DIRECTORY DICTIONARY_PATH ACOUSTIC_MODEL_PATH
-          OUTPUT_DIRECTORY"
-```
-Example:
-```bash
-mfa align C:\Users\ahmed\OneDrive\Desktop\Corpus english_us_arpa english_us_arpa C:\Users\ahmed\OneDrive\Desktop\Aligned_Output
-```
 
-MFA executed:
-
-* Feature extraction
-* G2P & graph compilation
-* First-pass alignment
-* Viterbi alignment
-* TextGrid export
-
-Alignment completed successfully.
-
----
-
-# **5. Validation**
-
-Command:
-
-The general syntax is:
 ```bash
 mfa validate <corpus_directory> <dictionary> <acoustic_model>
 ```
+
 Example:
+
 ```bash
 mfa validate C:\Users\Ahmed\Desktop\Corpus english_us_arpa english_us_arpa
 ```
@@ -170,6 +146,32 @@ Validation output:
 * Minor OOV warnings (expected)
 
 Corpus passed validation.
+
+---
+
+# **5. Run Forced Alignment**
+
+The general syntax is:
+
+```bash
+mfa align "[OPTIONS] CORPUS_DIRECTORY DICTIONARY_PATH ACOUSTIC_MODEL_PATH OUTPUT_DIRECTORY"
+```
+
+Example:
+
+```bash
+mfa align C:\Users\ahmed\OneDrive\Desktop\Corpus english_us_arpa english_us_arpa C:\Users\ahmed\OneDrive\Desktop\Aligned_Output
+```
+
+MFA executed:
+
+* Feature extraction
+* G2P & graph compilation
+* First-pass alignment
+* Viterbi alignment
+* TextGrid export
+
+Alignment completed successfully.
 
 ---
 
@@ -246,5 +248,8 @@ The complete forced alignment pipeline using MFA was successfully executed, incl
 * Environment setup
 * Dataset preparation
 * Dictionary & acoustic model download
+* Validation
 * Forced alignment
 * TextGrid verification in Praat
+
+```
