@@ -169,6 +169,8 @@ The alignment completed successfully without errors.
 
 To evaluate the alignments, I opened each `.TextGrid` in **Praat**:
 
+Download [Praat](https://praat.org/) from the official website.
+
 What I checked:
 
 * Word boundaries matched the waveform
