@@ -251,5 +251,3 @@ The complete forced alignment pipeline using MFA was successfully executed, incl
 * Validation
 * Forced alignment
 * TextGrid verification in Praat
-
-```
