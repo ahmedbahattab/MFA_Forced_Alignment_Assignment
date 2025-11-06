@@ -179,6 +179,7 @@ Alignment completed successfully.
 
 Every generated `.TextGrid` was:
 
+* Download [Praat](https://praat.org/) from the official website.
 * Checked for word tier alignment
 * Checked for phoneme tier alignment
 * Compared with spectrogram
