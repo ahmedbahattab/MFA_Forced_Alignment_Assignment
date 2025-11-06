@@ -1,4 +1,4 @@
-# **README.md — Forced Alignment using Montreal Forced Aligner (MFA)**
+# **Forced Alignment using Montreal Forced Aligner (MFA)**
 
 ### *Assignment 1 – Speech Processing*
 
