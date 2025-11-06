@@ -240,12 +240,10 @@ These provide visual proof of each step in the pipeline.
 
 I successfully completed the full forced alignment workflow:
 
-✅ Environment setup
-✅ Dataset preparation
-✅ Dictionary & acoustic model setup
-✅ Corpus validation
-✅ Forced alignment using MFA
-✅ TextGrid verification in Praat
-
-Want an even more polished/beautiful GitHub-style README with icons & colors?
-```
+* Environment setup
+* Dataset preparation
+* Dictionary & acoustic model setup
+* Corpus validation
+* Forced alignment using MFA
+* TextGrid verification in Praat
+---
