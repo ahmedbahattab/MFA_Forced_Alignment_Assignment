@@ -7,10 +7,17 @@
 <p><strong>Using Montreal Forced Aligner (MFA)</strong></p>
 
 <img src="https://img.shields.io/badge/Tool-MFA%203.3.8-blue">
-<img src="https://img.shields.io/badge/Environment-Conda-yellow">
+<img src="https://img.shields.io/badge/Environment-Miniconda-yellow">
 <img src="https://img.shields.io/badge/Language-English_US_ARPA-green">
 <img src="https://img.shields.io/badge/Visualization-Praat-purple">
+
+
+<img src="https://img.shields.io/badge/Python-3.9-informational">
+<img src="https://img.shields.io/badge/Dictionary-English_US_ARPA-9b59b6">
+<img src="https://img.shields.io/badge/Acoustic_Model-English_US_ARPA-6a5acd">
+
 </div>
+
 
 ---
 
@@ -119,11 +126,16 @@ All files were paired and prepared correctly.
 
 # **4. Run Forced Alignment**
 
-Main command used:
-
+The general syntax is:
 ```bash
 mfa align "[OPTIONS] CORPUS_DIRECTORY DICTIONARY_PATH ACOUSTIC_MODEL_PATH
           OUTPUT_DIRECTORY"
+```
+Example:
+```bash
+mfa align C:\Users\ahmed\OneDrive\Desktop\Corpus
+english_us_arpa english_us_arpa
+C:\Users\ahmed\OneDrive\Desktop\Aligned_Output
 ```
 
 MFA executed:
