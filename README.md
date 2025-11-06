@@ -138,12 +138,17 @@ Alignment completed successfully.
 
 ---
 
-# **5. Validation (Optional Step Performed)**
+# **5. Validation **
 
 Command:
 
+The general syntax is:
 ```bash
-mfa validate C:\Users\Ahmed\OneDrive\Desktop\Corpus english_us_arpa english_us_arpa
+mfa validate <corpus_directory> <dictionary> <acoustic_model>
+```
+Example:
+```bash
+mfa validate C:\Users\Ahmed\Desktop\Corpus english_us_arpa english_us_arpa
 ```
 
 Validation output:
